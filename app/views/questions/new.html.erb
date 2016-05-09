@@ -1,0 +1,35 @@
+<%= form_tag questions_path do %>
+	<% @question_group.each.with_index do |question, index| %>
+
+  		<%= fields_for 'questions[]', question do |q| %> 
+		  <div class="form-group">
+		  	<%= q.label :question, ("Question " + (index + 1).to_s) %><br />
+		  	<%= q.text_field :question %>
+		  </div>
+		  
+		  <div class="form-group answer-margin">
+		  	<%= q.label :a1, "Answer 1" %><br />
+		  	<%= q.text_field :a1 %>
+		  </div>
+		  
+		  <div class="form-group answer-margin">
+		  	<%= q.label :a2, "Answer 2" %><br />
+		  	<%= q.text_field :a2 %>
+		  </div>
+		  
+		  <div class="form-group answer-margin">
+		  	<%= q.label :a3, "Answer 3" %><br />
+		  	<%= q.text_field :a3 %>
+		  </div>
+		  
+		  <div class="form-group answer-margin">
+		  	<%= q.label :a4, "Answer 4" %><br />
+		  	<%= q.text_field :a4 %>
+		  </div>
+
+		<% end %>
+  	<% end %>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>

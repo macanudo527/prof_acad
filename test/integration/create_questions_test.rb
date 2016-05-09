@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class CreateQuestionsTest < ActionDispatch::IntegrationTest
+  
+  def setup
+    @user = users(:cookie)
+  end
+  
 
-  test "should save the right amount of questions" do
+  test "should save the right amount of questions" do 
+    post user_session_path, :user => {:email => @user.email, :password =>  @user.password} 
     get new_question_path
     assert_difference 'Question.count', 1 do
       post questions_path, {"questions" => [{"question" => "What is 1+1?",

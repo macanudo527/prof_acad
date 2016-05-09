@@ -5,3 +5,22 @@
 # below each fixture, per the syntax in the comments below
 #
 
+cookie:
+  id: '1'
+  name: Cookie Monster
+  email: cookie@monster.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now - 10.minutes %>
+  confirmation_sent_at: <%= Time.now - 8.minutes %>
+  created_at: <%= Time.now - 6.minutes %>
+  updated_at: <%= Time.now - 4.minutes %>
+  
+elmo:
+  id: '2'
+  name: Elmo
+  email: elmo@sesamestreet.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now - 10.minutes %>
+  confirmation_sent_at: <%= Time.now - 8.minutes %>
+  created_at: <%= Time.now - 6.minutes %>
+  updated_at: <%= Time.now - 4.minutes %>

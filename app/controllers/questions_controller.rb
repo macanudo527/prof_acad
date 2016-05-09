@@ -8,17 +8,12 @@ class QuestionsController < ApplicationController
   end
   
   def create
- #   if params.has_key?("question")
-  #    @question = Question.create(question_params(params))
- #   else 
       params["questions"].each do |question|
         # If the question is empty, we don't want to save it
         if !question_empty?(question) 
-          @question = Question.create(question_params(question))
-          @question.save
+          current_user.questions.build(question_params(question))
         end
       end
-#    end
     flash[:success] = "Quiz made!"
     redirect_to root_url
     

@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
-  
+#  before_action :authenticate_user!
+    
   def new
     @question_group = []
     20.times do
@@ -8,13 +9,14 @@ class QuestionsController < ApplicationController
   end
   
   def create
+
       params["questions"].each do |question|
         # If the question is empty, we don't want to save it
         if !question_empty?(question) 
-          current_user.questions.build(question_params(question))
+          current_user.questions.create!(question_params(question))
         end
       end
-    flash[:success] = "Quiz made!"
+    flash[:success] = "Quiz Made!"
     redirect_to root_url
     
   end

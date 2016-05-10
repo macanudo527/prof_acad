@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails',                   '4.2.4'
+gem 'rails',                   '4.2.6'
 gem 'bcrypt',                  '3.1.7'
 gem 'devise',                  '4.1.0'
 gem 'faker',                   '1.4.2'

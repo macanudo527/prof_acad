@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505130630) do
+ActiveRecord::Schema.define(version: 20160525010005) do
 
   create_table "answer_stats", force: :cascade do |t|
     t.integer  "question_id"
@@ -36,17 +36,6 @@ ActiveRecord::Schema.define(version: 20160505130630) do
 
   add_index "groupings", ["test_id"], name: "index_groupings_on_test_id"
 
-  create_table "question_assignments", force: :cascade do |t|
-    t.integer  "question_id"
-    t.integer  "grouping_id"
-    t.integer  "order"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "question_assignments", ["grouping_id"], name: "index_question_assignments_on_grouping_id"
-  add_index "question_assignments", ["question_id"], name: "index_question_assignments_on_question_id"
-
   create_table "question_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -55,19 +44,20 @@ ActiveRecord::Schema.define(version: 20160505130630) do
 
   create_table "questions", force: :cascade do |t|
     t.text     "question"
-    t.text     "a1"
+    t.text     "correct_answer"
     t.text     "a2"
     t.text     "a3"
     t.text     "a4"
     t.integer  "reference"
     t.integer  "reference_type"
     t.integer  "question_type"
-    t.integer  "correct"
     t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "grouping_id"
   end
 
+  add_index "questions", ["grouping_id"], name: "index_questions_on_grouping_id"
   add_index "questions", ["question_type"], name: "index_questions_on_question_type"
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 

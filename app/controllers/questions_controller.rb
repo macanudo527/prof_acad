@@ -1,41 +1,18 @@
 class QuestionsController < ApplicationController
-#  before_action :authenticate_user!
+
     
   def new
-    @question_group = []
-    20.times do
-      @question_group << Question.new
-    end
   end
   
-  def create
+  def create  
+  end
+  
+  def show
+  end
+  
+  def edit
+    @question = Question.find(params[:id])
+  end
 
-      params["questions"].each do |question|
-        # If the question is empty, we don't want to save it
-        if !question_empty?(question) 
-          current_user.questions.create!(question_params(question))
-        end
-      end
-    flash[:success] = "Quiz Made!"
-    redirect_to root_url
-    
-  end
-  
-  private
-    
-    # Check if all question fields are filled out
-    def question_empty?(question)
-      if question["question"] != "" || question["a1"] != "" || 
-          question["a2"] != "" || question["a3"] != "" ||
-          question["a4"] != ""
-          return false
-      else
-          return true
-      end
-    end
-    
-    def question_params(my_params)
-      my_params.permit(:question, :a1, :a2, :a3, :a4)
-    end
   
 end

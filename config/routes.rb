@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'groupings/new'
+
   devise_for :users
   
   root 'static_pages#home'
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
   get 'static_pages/about'
   
   resources :questions
+  resources :groupings
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

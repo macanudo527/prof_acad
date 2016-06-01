@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-8">
+		<section class="grouping_info">
+
+				<%= @grouping.name %>
+
+		</section>
+	</div>
+	<div class="col-md-8">
+		<ul class="users">
+			<% @grouping.questions.each do |question| %>
+				<%= render question %>
+			<% end %>
+		</ul>
+
+	</div>
+</div>
+
+
+<%= link_to 'Edit', edit_grouping_path(@grouping) %> |
+<%= link_to 'Back', groupings_path %>

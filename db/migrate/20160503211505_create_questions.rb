@@ -8,7 +8,6 @@ class CreateQuestions < ActiveRecord::Migration
       t.string :a4
       t.integer :reference
       t.integer :reference_type
-      t.references :question_type, index: true, foreign_key: true
       t.integer :correct
       t.references :user, index: true, foreign_key: true
 

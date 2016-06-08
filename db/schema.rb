@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525010005) do
+ActiveRecord::Schema.define(version: 20160608004720) do
 
   create_table "answer_stats", force: :cascade do |t|
     t.integer  "question_id"
@@ -50,15 +50,15 @@ ActiveRecord::Schema.define(version: 20160525010005) do
     t.text     "a4"
     t.integer  "reference"
     t.integer  "reference_type"
-    t.integer  "question_type"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "grouping_id"
+    t.integer  "question_type_id"
   end
 
   add_index "questions", ["grouping_id"], name: "index_questions_on_grouping_id"
-  add_index "questions", ["question_type"], name: "index_questions_on_question_type"
+  add_index "questions", ["question_type_id"], name: "index_questions_on_question_type_id"
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
   create_table "tests", force: :cascade do |t|

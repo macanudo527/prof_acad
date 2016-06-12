@@ -11,8 +11,13 @@
 			<% @grouping.questions.each do |question| %>
 				<%= render question %>
 			<% end %>
+
+
 		</ul>
 
+	</div>
+	<div class="col-md-8">
+		<%= link_to 'Add new question', new_question_path(@grouping) %> 
 	</div>
 </div>
 

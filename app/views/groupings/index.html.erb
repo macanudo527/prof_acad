@@ -1,0 +1,12 @@
+<% provide(:title, 'Your Quizzes') %>
+<h1>Your Quizzes</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+	<% @groupings.each do |grouping| %>
+		<%= render @groupings %>
+	<% end %>
+</ul>
+
+<%= will_paginate %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608004720) do
+ActiveRecord::Schema.define(version: 20160609005241) do
 
   create_table "answer_stats", force: :cascade do |t|
     t.integer  "question_id"
@@ -32,9 +32,11 @@ ActiveRecord::Schema.define(version: 20160608004720) do
     t.integer  "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "groupings", ["test_id"], name: "index_groupings_on_test_id"
+  add_index "groupings", ["user_id"], name: "index_groupings_on_user_id"
 
   create_table "question_types", force: :cascade do |t|
     t.string   "name"

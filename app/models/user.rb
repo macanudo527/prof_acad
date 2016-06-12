@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
   has_many :questions
+  has_many :groupings
+  has_many :tests
 end

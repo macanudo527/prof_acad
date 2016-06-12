@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'groupings/new'
 
   devise_for :users
   

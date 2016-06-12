@@ -2,6 +2,7 @@ class QuestionsController < ApplicationController
 
     
   def new
+    @question = @grouping.Question.new
   end
   
   def create  
@@ -27,8 +28,8 @@ class QuestionsController < ApplicationController
   private
 
     def question_params
-      params.require(:question).permit(:question, :correct_answer, :a1,
-                                   :a2, :a3)
+      params.require(:question).permit(:id, :question, :correct_answer, :a2,
+                                   :a3, :a4)
     end
 
 

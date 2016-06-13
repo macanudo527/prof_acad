@@ -12,7 +12,7 @@ class GroupingsController < ApplicationController
   end
   
  def create
-    @grouping = current_user.Grouping.new(grouping_params)
+    @grouping = current_user.groupings.build(grouping_params)
     respond_to do |format|
       if @grouping.save
         flash[:success] = "Quiz Made!"

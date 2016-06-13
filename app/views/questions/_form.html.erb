@@ -5,11 +5,6 @@
 		<div class="form-group">
 		  <%= ff.label :question, "Question" %></br>
 		  <%= ff.text_field :question, :size => 80  %>
-				
-		<% if ff.object.persisted? %>
-		  <%= ff.check_box :_destroy %>
-		  <%= ff.label :_destroy, "Destroy" %>
-		<% end %>	
 		</div>
 		
 		  <div class="form-group answer-margin">
@@ -31,6 +26,8 @@
 		  	<%= ff.label :a4, "Incorrect Answer 3" %>
 		  	<%= ff.text_field :a4 %>
 		  </div>
+		  
+		  <%= hidden_field_tag 'grouping_id', @question.grouping_id %>
 		  
 		  <div class="actions">
     		 <%= ff.submit yield(:button_text), class: "btn btn-primary" %>

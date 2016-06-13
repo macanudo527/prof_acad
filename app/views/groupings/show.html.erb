@@ -17,7 +17,7 @@
 
 	</div>
 	<div class="col-md-8">
-		<%= link_to 'Add new question', new_question_path(@grouping) %> 
+		<%= link_to "Add a new question", new_question_path(:question => { :grouping_id => @grouping.id } ) %>
 	</div>
 </div>
 

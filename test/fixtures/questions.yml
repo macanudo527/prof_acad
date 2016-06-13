@@ -1,3 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-
+one:
+  question: What is 1 + 1?
+  correct_answer: 2 
+  a2: 1
+  a3: 3
+  a4: 4
+  user_id: 1
+  grouping_id: 1
+  
+two:
+  question: What is 2 + 2?
+  correct_answer: 4 
+  a2: 1
+  a3: 3
+  a4: 5
+  user_id: 2
+  grouping_id: 2  

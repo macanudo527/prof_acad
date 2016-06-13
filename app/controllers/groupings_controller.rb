@@ -3,16 +3,15 @@ class GroupingsController < ApplicationController
   before_action :correct_user,    only: [:edit, :update] 
  
   def new
-    @grouping = current_user.Grouping.new
-  end
-  
-  def new_question
-    @question = @grouping.Question.new
-    render new_question_path(@question)
+    @grouping = current_user.groupings.new
   end
   
  def create
+
     @grouping = current_user.groupings.build(grouping_params)
+    @grouping.questions.each do |question|
+      question.user = current_user      
+    end
     respond_to do |format|
       if @grouping.save
         flash[:success] = "Quiz Made!"
@@ -46,8 +45,12 @@ class GroupingsController < ApplicationController
   def edit
     @grouping = Grouping.find(params[:id])
   end
-  
+ 
   def index
+    @groupings = Grouping.paginate(page: params[:page])    
+  end
+ 
+  def own
     @groupings = current_user.groupings.paginate(page: params[:page])    
   end
   
@@ -63,7 +66,7 @@ class GroupingsController < ApplicationController
   private
   
     def grouping_params
-      params.require(:grouping).permit(:name, questions_attributes: [:id, :grouping_id, :question, :correct_answer, :a2, :a3, :a4])
+      params.require(:grouping).permit(:name, questions_attributes: [:id, :grouping_id, :user_id, :question, :correct_answer, :a2, :a3, :a4])
     end
     
     # Confirms the correct user.

@@ -7,10 +7,11 @@
 # These fixtures currently don't work :(
 
 cookie:
-  id: '1'
   name: Cookie Monster
   email: cookie@monster.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  sign_in_count: 1
+  confirmation_token: nil
   confirmed_at: <%= Time.now - 10.minutes %>
   confirmation_sent_at: <%= Time.now - 8.minutes %>
   created_at: <%= Time.now - 6.minutes %>

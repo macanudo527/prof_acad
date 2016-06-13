@@ -6,6 +6,12 @@ Rails.application.routes.draw do
 
   get 'static_pages/about'
   
+  resources :groupings do
+    member do
+      get :own
+    end
+  end
+  
   resources :questions
   resources :groupings
 

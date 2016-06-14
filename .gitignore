@@ -16,6 +16,9 @@
 !/log/.keep
 /tmp
 *~
+*.class
+*.pyc
+*.pyo
 
 .DS_Store
 vendor/bundle
@@ -30,3 +33,6 @@ config/environments/*.local.yml
 config/database.yml
 *~
 public/system
+
+# Ignore Spring files.
+/spring/*.pid

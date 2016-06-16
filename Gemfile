@@ -23,12 +23,24 @@ group :development, :test do
   gem 'byebug',      '3.4.0'
   gem 'web-console', '2.0.0.beta3'
   gem 'spring',      '1.1.3'
+
+  # pry is a more useful debug tool than irb. (https://github.com/pry/pry)
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'pry-doc'
+  gem 'pry-stack_explorer'
 end
 
 group :test do
   gem 'minitest-reporters', '1.0.5'
   gem 'mini_backtrace',     '0.1.3'
   gem 'guard-minitest',     '2.3.1'
+
+  # We don't use minitest but rspec, so you need to be used to rspec.
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'factory_girl_rails'
+  gem 'guard'
+  gem 'guard-rspec'
 end
 
 group :production do

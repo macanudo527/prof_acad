@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609005241) do
+ActiveRecord::Schema.define(version: 20160614002511) do
 
   create_table "answer_stats", force: :cascade do |t|
     t.integer  "question_id"
-    t.integer  "a1"
+    t.integer  "correct_answer"
     t.integer  "a2"
     t.integer  "a3"
     t.integer  "a4"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "answer_stats", ["question_id"], name: "index_answer_stats_on_question_id"

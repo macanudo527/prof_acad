@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'user_answer/new'
+
   devise_for :users
   
-  root 'static_pages#home'
+  root 'home#index'
 
-  get 'static_pages/about'
+  get 'home/about'
   
   resources :groupings do
     member do

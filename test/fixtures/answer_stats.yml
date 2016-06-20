@@ -2,14 +2,14 @@
 
 one:
   question_id: 
-  a1: 1
+  correct_answer: 1
   a2: 1
   a3: 1
   a4: 1
 
 two:
   question_id: 
-  a1: 1
+  correct_answer: 1
   a2: 1
   a3: 1
   a4: 1

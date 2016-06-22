@@ -28,7 +28,11 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
   config.include Devise::TestHelpers, type: :feature
+  config.include Devise::TestHelpers, type: :requests
   config.include FactoryGirl::Syntax::Methods
+  config.extend ControllerMacros, :type => :controller
+ # config.backtrace_exclusion_patterns << /actionpack/
+ # config.warnings = false
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

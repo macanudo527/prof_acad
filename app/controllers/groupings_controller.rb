@@ -6,8 +6,7 @@ class GroupingsController < ApplicationController
     @grouping = current_user.groupings.new
   end
   
- def create
-
+  def create
     @grouping = current_user.groupings.build(grouping_params)
     @grouping.questions.each do |question|
       question.user = current_user      

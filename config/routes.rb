@@ -1,21 +1,26 @@
 Rails.application.routes.draw do
 
-  get 'user_answer/new'
-
   devise_for :users
+  
+  resources :users do
+    resources :groupings
+    resources :questions
+  end
+  
+  authenticated :user do
+    root 'questions#index', as: :authenticated_root
+  end
   
   root 'home#index'
 
   get 'home/about'
   
+  resources :questions
+
   resources :groupings do
-    member do
-      get :own
-    end
+    resources :questions
   end
   
-  resources :questions
-  resources :groupings
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

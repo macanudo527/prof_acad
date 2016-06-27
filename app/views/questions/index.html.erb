@@ -1,0 +1,22 @@
+<% 
+if current_page?(grouping_questions_path(@questions.first.grouping))
+	@title = "Questions from " + @questions.first.grouping.name
+elsif current_page?(user_questions_path(current_user))
+	@title = "Your Questions"
+else
+	@title = "Available Questions"
+end
+%>
+
+<% provide(:title, @title) %>
+<h1><%= @title %></h1>
+
+<%= will_paginate %>
+
+<ul class="questions">
+	<% @questions.each_with_index do |question, index| %>
+		<%= render partial: question, locals: {question: question, index: index} %>
+	<% end %>
+</ul>
+
+<%= will_paginate %>

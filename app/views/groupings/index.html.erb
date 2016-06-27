@@ -1,5 +1,13 @@
-<% provide(:title, 'Available Quizzes') %>
-<h1>Available Quizzes</h1>
+<% 
+if current_page?(user_groupings_path(current_user))
+	@title = "Your Quizzes"
+else
+	@title = "Available Quizzes"
+end
+%>
+
+<% provide(:title, @title) %>
+<h1><%= @title %></h1>
 
 <%= will_paginate %>
 
@@ -8,5 +16,11 @@
 		<%= render grouping %>
 	<% end %>
 </ul>
+
+<% if @groupings.empty? %>
+	<div class="col-md-8">
+		There don't seem to be any quizzes.  <%= link_to 'Create one now.', new_user_grouping_path(current_user) %>
+	</div>
+<% end %>
 
 <%= will_paginate %>

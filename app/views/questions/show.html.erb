@@ -1,0 +1,36 @@
+<div class="row">
+	<div class="col-md-8">
+		<div class="question">
+		  <b><%= @question.question %></b>
+		</div>
+		
+		  <div class="answer-margin">
+		  	<b>Correct Answer: </b><%= @question.correct_answer %>
+		  </div>
+		  
+		  <div class="answer-margin">
+			<b>Answer 1: </b><%= @question.a2 %>
+		  </div>
+		  
+		  <div class="answer-margin">
+		  	<b>Answer 2: </b><%= @question.a3 %>
+		  </div>
+		  
+		  <div class="answer-margin">
+		  	<b>Answer 3: </b><%= @question.a4 %>
+		  </div>
+		  
+	  	<% if @question.grouping.present? %>
+	  		<div class="form-group">
+		  		<b>Quiz: </b><%= @question.grouping.name %>
+			<div>
+	  	<% end %>
+	</div>
+</div>
+
+
+<%= link_to 'Edit', edit_user_question_path(current_user, @question) %> |
+<% if @question.grouping.present? %>
+	<%= link_to @question.grouping.name, user_grouping_path(current_user, @question.grouping)%> |
+<% end %>
+<%= link_to 'All Questions', questions_path %>

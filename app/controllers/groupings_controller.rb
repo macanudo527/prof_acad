@@ -1,6 +1,6 @@
 class GroupingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user,    only: [:edit, :update] 
+  before_action :correct_user,    only: [:edit, :update, :destroy] 
  
   def new
     @grouping = current_user.groupings.new
@@ -27,7 +27,7 @@ class GroupingsController < ApplicationController
     @grouping = Grouping.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @user }
+      format.xml  { render :xml => @grouping }
     end
   end
   
@@ -46,11 +46,9 @@ class GroupingsController < ApplicationController
   end
  
   def index
-    @groupings = Grouping.paginate(page: params[:page])    
-  end
- 
-  def own
-    @groupings = current_user.groupings.paginate(page: params[:page])    
+    @groupings = params[:user_id] ? 
+      User.find(params[:user_id]).groupings.paginate(page: params[:page]) :     
+      @groupings = Grouping.paginate(page: params[:page])    
   end
   
   def update
@@ -65,7 +63,7 @@ class GroupingsController < ApplicationController
   private
   
     def grouping_params
-      params.require(:grouping).permit(:name, questions_attributes: [:id, :grouping_id, :user_id, :question, :correct_answer, :a2, :a3, :a4])
+      params.require(:grouping).permit(:name, questions_attributes: [:id, :grouping_id, :user_id, :question, :correct_answer, :a2, :a3, :a4, :destroy])
     end
     
     # Confirms the correct user.

@@ -27,9 +27,17 @@
 		  	<%= ff.text_field :a4 %>
 		  </div>
 		  
-		  <%= hidden_field_tag 'grouping_id', @question.grouping_id %>
 		  
-		  <div class="actions">
+
+	  	<% if current_user.groupings.present? %>
+	  		<div class="form-group">
+		  		<%= ff.label :grouping_id, "Quiz" %></br>
+		  		<%= ff.collection_select(:grouping_id, current_user.groupings, :id, :name)%>
+			<div>
+	  	<% end %>
+
+		  
+		<div class="actions">
     		 <%= ff.submit yield(:button_text), class: "btn btn-primary" %>
   		</div>	
 		

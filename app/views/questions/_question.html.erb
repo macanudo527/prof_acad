@@ -1,6 +1,36 @@
 <li>
-	<%= link_to question.question, edit_question_path(question) %> | 
+	
+	<a title="<%= question.question %>" href="javascript:void(0)" onclick="unspoiler('<%= "spoiler" + index.to_s %>')">
+		<%= question.question %>
+	</a>
 	<% if current_user == question.user %>
-			<%= link_to 'delete', question, method: :delete, data: {confirm: "Are you sure?"} %>
-	<% end %>		
-</li>
+			 | 
+			 <% if question.grouping.present? %>
+			 	<%= link_to 'edit', edit_grouping_question_path(question.grouping, question) %>			 	
+			 <% else %>
+			 	<%= link_to 'edit', edit_user_question_path(current_user, question) %>
+			 <% end %>
+			 | <%= link_to 'delete', question, method: :delete, data: {confirm: "Are you sure?"} %>
+	<% end %>
+	<div id="spoiler<%= index%>" style="display: none;">
+		<div class="answer-margin">
+			<b>Correct:</b> <%= question.correct_answer%>
+		</div>
+		<div class="answer-margin">
+			<b>Answer 1:</b> <%= question.a2%>
+		</div>
+		<div class="answer-margin">
+			<b>Answer 2:</b> <%= question.a3%>
+		</div>
+		<div class="answer-margin">
+			<b>Answer 3:</b> <%= question.a4%>
+		</div>
+		
+		<% if question.grouping.present? %>
+		<div>
+			<b>Quiz: </b> <%= question.grouping.name%>
+		</div>
+		<% end %>
+		
+	</div>		
+</li>  

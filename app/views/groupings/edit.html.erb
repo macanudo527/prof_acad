@@ -14,8 +14,7 @@
 		  <%= ff.text_field :question, :size => 80  %>
 				
 		<% if ff.object.persisted? %>
-		  <%= ff.check_box :_destroy %>
-		  <%= ff.label :_destroy, "Destroy" %>
+		  <%= link_to 'delete', grouping_question_path(@grouping.id, ff.object.id), method: :delete, data: {confirm: "Are you sure?"} %>
 		<% end %>	
 		</div>
 		

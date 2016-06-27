@@ -1,7 +1,7 @@
 <% 
-if current_page?(grouping_questions_path(@questions.first.grouping))
+if request.fullpath.include?("grouping")
 	@title = "Questions from " + @questions.first.grouping.name
-elsif current_page?(user_questions_path(current_user))
+elsif request.fullpath.include?("user")
 	@title = "Your Questions"
 else
 	@title = "Available Questions"

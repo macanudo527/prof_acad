@@ -1,5 +1,5 @@
 <% 
-if current_page?(user_groupings_path(current_user))
+if request.fullpath.include?("user")
 	@title = "Your Quizzes"
 else
 	@title = "Available Quizzes"

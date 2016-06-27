@@ -76,8 +76,8 @@ class QuestionsController < ApplicationController
 
     # Confirms the correct user.
     def correct_user
-      @grouping = Grouping.find(params[:id])
-      redirect_to(root_url) unless current_user == @grouping.user
+      @question = Question.find(params[:id])
+      redirect_to(root_url) unless current_user == @question.user
     end
 
   

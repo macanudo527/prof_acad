@@ -18,7 +18,7 @@ end
 </ul>
 
 <% if @groupings.empty? %>
-	<div class="col-md-8">
+	<div>
 		There don't seem to be any quizzes.  <%= link_to 'Create one now.', new_user_grouping_path(current_user) %>
 	</div>
 <% end %>

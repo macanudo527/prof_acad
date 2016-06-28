@@ -39,6 +39,8 @@ group :test do
   # We don't use minitest but rspec, so you need to be used to rspec.
   gem 'rspec-rails', '~> 3.0.0'
   gem 'spring-commands-rspec'
+  gem 'database_cleaner'
+  gem 'capybara'
   gem 'factory_girl_rails'
   gem 'guard'
   gem 'guard-rspec'

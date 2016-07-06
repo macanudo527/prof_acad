@@ -30,13 +30,20 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.include Devise::TestHelpers, type: :controller
   config.include Devise::TestHelpers, type: :view
-  config.include Devise::TestHelpers, type: :feature
-  config.include Devise::TestHelpers, type: :requests
+#  config.include Devise::TestHelpers, type: :feature
+  config.include Devise::TestHelpers, type: :request
   config.include FactoryGirl::Syntax::Methods
   config.extend ControllerMacros, :type => :controller
+  config.include Warden::Test::Helpers
+  
+  config.before(:each, :login => :true, :type => :feature) do
+   @user = FactoryGirl.create(:user)
+   login_as(@user, :scope => :user)    
+  end
   
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
+    Warden.test_mode!
   end
   config.before(:each) do |example|
     DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
@@ -44,6 +51,7 @@ RSpec.configure do |config|
   end
   config.after(:each) do
     DatabaseCleaner.clean
+    Warden.test_reset!
   end
  # config.backtrace_exclusion_patterns << /actionpack/
  # config.warnings = false

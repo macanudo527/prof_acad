@@ -12,6 +12,7 @@
 			 <% end %>
 			 | <%= link_to 'delete', question, method: :delete, data: {confirm: "Are you sure?"} %>
 	<% end %>
+	| <%= link_to 'answer', new_question_user_answer_path(question) %>
 	<div id="spoiler<%= index%>" style="display: none;">
 		<div class="answer-margin">
 			<b>Correct:</b> <%= question.correct_answer%>

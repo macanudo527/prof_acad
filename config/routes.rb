@@ -15,7 +15,9 @@ Rails.application.routes.draw do
 
   get 'home/about'
   
-  resources :questions
+  resources :questions do
+    resources :user_answers
+  end
 
   resources :groupings do
     resources :questions

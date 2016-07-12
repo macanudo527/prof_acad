@@ -8,7 +8,6 @@ class UserAnswersController < ApplicationController
     answer_seq = (1..4).to_a.shuffle.take(4).join("").to_i
     @user_answer.update(answer_seq: answer_seq)
     @user_answer.save
-    
   end
   
   def update

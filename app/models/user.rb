@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :groupings
   has_many :tests
+  has_many :user_answers
+  has_many :answer_sessions
+  
 end

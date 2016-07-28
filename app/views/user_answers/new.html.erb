@@ -1,47 +1,53 @@
-<%= form_for([@question, @user_answer]) do |f| %>
+<%= form_for([@grouping, @answer_session]) do |f| %>
 
-
-<% answers = answer_shuffler(@question, @user_answer.answer_seq) %>
-
-
-
-  <% if @user_answer.errors.any? %>
+  <% if @answer_session.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user_answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+      <h2><%= pluralize(@answer_session.questions.user_answers.errors.count, "error") %> prohibited this answer from being saved:</h2>
 
       <ul>
-      <% @user_answer.errors.full_messages.each do |msg| %>
+      <% @answer_session.questions.user_answers.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+  
+<%= f.fields_for :questions, UserAnswer.new(:user => current_user, 
+          :question => question) do |ff| %>
+
+<% ff.object.answer_seq = (1..4).to_a.shuffle.take(4).join("").to_i %>
+
+<% answers = answer_shuffler(ff.object, ff.object.answer_seq)%>
+
+
 
 	<div class="form-group">
-		<%= f.label :question, @question.question %>
+		<%= ff.label :question, @question.question %>
     </div>
     
  	<div class="form-group">
-		<%= f.radio_button :answer, '0' %>
-		<%= f.label :answer, answers[0], :value => '0' %>
+		<%= ff.radio_button :answer, '0' %>
+		<%= ff.label :answer, answers[0], :value => '0' %>
     </div>  
     
     <div class="form-group">
-		<%= f.radio_button :answer, '1' %>
-		<%= f.label :answer, answers[1], :value => '1' %>
+		<%= ff.radio_button :answer, '1' %>
+		<%= ff.label :answer, answers[1], :value => '1' %>
     </div>
     
     <div class="form-group">
-		<%= f.radio_button :answer, '2' %>
-		<%= f.label :answer, answers[2], :value => '2' %>
+		<%= ff.radio_button :answer, '2' %>
+		<%= ff.label :answer, answers[2], :value => '2' %>
     </div>
     
     <div class="form-group">
-		<%= f.radio_button :answer, '3' %>
-		<%= f.label :answer, answers[3], :value => '3' %>
+		<%= ff.radio_button :answer, '3' %>
+		<%= ff.label :answer, answers[3], :value => '3' %>
     </div>   
     
-    <%= f.hidden_field :id, :value => @user_answer.id %>
+    <%= f.hidden_field :id, :value => @user_answer[ff.object.id].id %>
+    
+    <% end %>
     
 
 

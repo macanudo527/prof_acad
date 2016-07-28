@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user,    only: [:edit, :update, :destroy] 
-    
+  helper UserAnswerHelper
+      
   def new
     @question = current_user.questions.new
   end

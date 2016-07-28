@@ -1,5 +1,6 @@
 module UserAnswerHelper
-  def answer_shuffler(question, answer_seq)
+  def answer_shuffler(question, answer_seq = nil)
+    answer_seq ||= (1..4).to_a.shuffle.take(4).join("").to_i
     answer_array = Array.new
     answer_array = answer_seq.to_s.split('').map { |digit| digit.to_i }
     answers = Array.new
@@ -8,7 +9,6 @@ module UserAnswerHelper
     answers[2] = set_answer(question, answer_array[2])
     answers[3] = set_answer(question, answer_array[3])
     answers
-
   end
   
   private

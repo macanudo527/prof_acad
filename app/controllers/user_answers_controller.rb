@@ -3,11 +3,13 @@ class UserAnswersController < ApplicationController
   helper UserAnswerHelper
 
   def new
-    @question = Question.find(params[:question_id])
-    @user_answer = UserAnswer.new(:user => current_user, :question => @question) 
-    answer_seq = (1..4).to_a.shuffle.take(4).join("").to_i
-    @user_answer.update(answer_seq: answer_seq)
-    @user_answer.save
+      @question = Question.find(params[:question_id])
+      answer_seq = (1..4).to_a.shuffle.take(4).join("").to_i
+      @answer_session = AnswerSession.new(:user => current_user, 
+                :grouping => @grouping)
+      @user_answer = UserAnswer.new(:user => current_user, 
+                :question => @question, :answer_seq => answer_seq,
+                :answer_session => @answer_session).save    
   end
   
   def update

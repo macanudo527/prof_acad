@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708005138) do
+ActiveRecord::Schema.define(version: 20160717061651) do
+
+  create_table "answer_sessions", force: :cascade do |t|
+    t.integer  "grouping_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "answer_sessions", ["grouping_id"], name: "index_answer_sessions_on_grouping_id"
+  add_index "answer_sessions", ["user_id"], name: "index_answer_sessions_on_user_id"
 
   create_table "answer_stats", force: :cascade do |t|
     t.integer  "question_id"
@@ -73,11 +83,13 @@ ActiveRecord::Schema.define(version: 20160708005138) do
     t.integer  "user_id"
     t.integer  "question_id"
     t.integer  "answer"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "answer_seq"
+    t.integer  "answer_session_id"
   end
 
+  add_index "user_answers", ["answer_session_id"], name: "index_user_answers_on_answer_session_id"
   add_index "user_answers", ["question_id"], name: "index_user_answers_on_question_id"
   add_index "user_answers", ["user_id"], name: "index_user_answers_on_user_id"
 

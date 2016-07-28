@@ -1,3 +1,4 @@
+<% answers = answer_shuffler(question) %>
 <li>
 	
 	<a title="<%= question.question %>" href="javascript:void(0)" onclick="unspoiler('<%= "spoiler" + index.to_s %>')">
@@ -15,20 +16,20 @@
 	| <%= link_to 'answer', new_question_user_answer_path(question) %>
 	<div id="spoiler<%= index%>" style="display: none;">
 		<div class="answer-margin">
-			<b>Correct:</b> <%= question.correct_answer%>
+			<b>Answer 1:</b> <%= answers[0]%>
 		</div>
 		<div class="answer-margin">
-			<b>Answer 1:</b> <%= question.a2%>
+			<b>Answer 2:</b> <%= answers[1]%>
 		</div>
 		<div class="answer-margin">
-			<b>Answer 2:</b> <%= question.a3%>
+			<b>Answer 3:</b> <%= answers[2]%>
 		</div>
 		<div class="answer-margin">
-			<b>Answer 3:</b> <%= question.a4%>
+			<b>Answer 4:</b> <%= answers[3]%>
 		</div>
 		
 		<% if question.grouping.present? %>
-		<div>
+		<div class="answer-margin">
 			<b>Quiz: </b> <%= question.grouping.name%>
 		</div>
 		<% end %>

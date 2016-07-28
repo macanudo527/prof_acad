@@ -1,0 +1,58 @@
+<%= form_for([@grouping, @answer_session]) do |f| %>
+
+  <% if @answer_session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@answer_session.questions.user_answers.errors.count, "error") %> prohibited this answer from being saved:</h2>
+
+      <ul>
+      <% @answer_session.questions.user_answers.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% @grouping.questions.each do |question| %>
+	
+	<div class="form-group">
+		<%= question.question %>
+	</div>
+
+	  <%= f.fields_for :user_answers, question.user_answers.find_by(answer_session: @answer_session) do |a| %>
+	
+	    <% answers = answer_shuffler(question, a.object.answer_seq)%> 
+	
+	    <div class="form-group">
+			<%= a.radio_button :answer, '0' %>
+			<%= a.label :answer, answers[0], :value => '0' %>
+	    </div>
+	
+	    <div class="form-group">
+			<%= a.radio_button :answer, '1' %>
+			<%= a.label :answer, answers[1], :value => '1' %>
+	    </div>
+	
+	    <div class="form-group">
+			<%= a.radio_button :answer, '2' %>
+			<%= a.label :answer, answers[2], :value => '2' %>
+	    </div>  
+	    
+	   	<div class="form-group">
+			<%= a.radio_button :answer, '3' %>
+			<%= a.label :answer, answers[3], :value => '3' %>
+	    </div>  
+	    
+	    <%= a.hidden_field :question_id, :value => question.id %>
+	
+	  <% end %>
+
+  <% end %>
+    
+
+
+
+
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>

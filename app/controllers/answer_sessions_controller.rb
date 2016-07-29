@@ -31,13 +31,13 @@ class AnswerSessionsController < ApplicationController
     def answer_session_params
       
       filtered_params = params.require(:answer_session)
-                        .permit([user_answers_attributes: [:question_id]])                      
+                        .permit([user_answers_attributes: [:question_id, :answer, :id]])                      
       
       params[:answer_session][:user_answers_attributes].each do |user_answer|
         answer_seq = UserAnswer.find_by(user_answer[1][:id]).answer_seq
         answer_array = answer_seq.to_s.split('').map { |digit| digit.to_i }
         real_answer = answer_array[user_answer[1][:answer].to_i]        
-        filtered_params[:user_answers_attributes][user_answer[0]].merge(answer: real_answer)
+        filtered_params[:user_answers_attributes][user_answer[0]].merge!(answer: real_answer)
       end
 
       # This marks the newly added parameters as permitted.  It's only necessary because we

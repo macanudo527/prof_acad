@@ -5,4 +5,5 @@ class Question < ActiveRecord::Base
   has_many   :user_answers 
   
   validates_presence_of :question, :correct_answer, :a2, :a3, :a4
+  validates :question, uniqueness: true
 end

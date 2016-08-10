@@ -5,11 +5,10 @@ class UserAnswersController < ApplicationController
   def new
       @question = Question.find(params[:question_id])
       answer_seq = (1..4).to_a.shuffle.take(4).join("").to_i
-      @answer_session = AnswerSession.new(:user => current_user, 
-                :grouping => @grouping)
       @user_answer = UserAnswer.new(:user => current_user, 
                 :question => @question, :answer_seq => answer_seq,
-                :answer_session => @answer_session).save    
+                :answer_session => nil)
+      @user_answer.save   
   end
   
   def update

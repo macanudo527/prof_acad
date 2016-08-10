@@ -1,25 +1,20 @@
-<%= form_for([@grouping, @answer_session]) do |f| %>
+<%= form_for([@question, @user_answer]) do |f| %>
 
-  <% if @answer_session.errors.any? %>
+  <% if @user_answer.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@answer_session.questions.user_answers.errors.count, "error") %> prohibited this answer from being saved:</h2>
+      <h2><%= pluralize(@user_answer.questions.user_answers.errors.count, "error") %> prohibited this answer from being saved:</h2>
 
       <ul>
-      <% @answer_session.questions.user_answers.errors.full_messages.each do |msg| %>
+      <% @user_answer.questions.user_answers.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
   
-<%= f.fields_for :questions, UserAnswer.new(:user => current_user, 
-          :question => question) do |ff| %>
+<%= f.fields_for @user_answer do |ff| %>
 
-<% ff.object.answer_seq = (1..4).to_a.shuffle.take(4).join("").to_i %>
-
-<% answers = answer_shuffler(ff.object, ff.object.answer_seq)%>
-
-
+<% answers = answer_shuffler(@question, ff.object.answer_seq)%>
 
 	<div class="form-group">
 		<%= ff.label :question, @question.question %>
@@ -44,8 +39,6 @@
 		<%= ff.radio_button :answer, '3' %>
 		<%= ff.label :answer, answers[3], :value => '3' %>
     </div>   
-    
-    <%= f.hidden_field :id, :value => @user_answer[ff.object.id].id %>
     
     <% end %>
     

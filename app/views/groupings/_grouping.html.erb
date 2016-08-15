@@ -4,4 +4,5 @@
 			 | <%= link_to 'edit', edit_user_grouping_path(current_user, grouping) %>
 			 | <%= link_to 'delete', grouping, method: :delete, data: {confirm: "Are you sure?"} %>
 	<% end %>
+	<%= link_to 'Start!', new_grouping_answer_session_path(grouping) %>
 </li>

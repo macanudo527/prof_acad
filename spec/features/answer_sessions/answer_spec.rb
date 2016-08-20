@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Answer a Grouping' do
  before {
    grouping = FactoryGirl.create(:grouping)
-   2.times do
+   11.times do
      question = FactoryGirl.create(:question)
      question.user = @user
      question.grouping = grouping
@@ -17,7 +17,8 @@ RSpec.feature 'Answer a Grouping' do
    expect(page.current_path).to eq new_user_session_path
  end 
  
- scenario 'Save all answers correctly' do
+ scenario 'can\'t save unless you answer all questions', :login => true do
+  
    
  end 
   

@@ -42,6 +42,7 @@ group :test do
   gem 'spring-commands-rspec'
   gem 'database_cleaner'
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'factory_girl_rails'
   gem 'guard'
   gem 'guard-rspec'

@@ -2,12 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
-
-
-
-
-
 $(document).ready ->
 	#jQuery time
 	current_fs = undefined
@@ -109,5 +103,4 @@ $(document).ready ->
 		if $unchecked.length
 			alert 'You didn\'t answer the following questions:　\n' + questionlist
 			e.preventDefault()
-
-return
+	return

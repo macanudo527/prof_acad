@@ -6,4 +6,7 @@ class AnswerSession < ActiveRecord::Base
   accepts_nested_attributes_for :user_answers,
     :allow_destroy => true,
     :reject_if     => :all_blank
+  
+    
+  
 end

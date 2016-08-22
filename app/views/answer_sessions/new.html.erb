@@ -39,11 +39,12 @@
 	
 	  <% end %>
 	  
-	  <% if (index+1 > 5) %>
-	  	<input type="button" name="previous" class="previous action-button" value="Previous" />
-	  <% end %>
+
 	  		
 	<% if (((index+1)%5).zero? && (@questions.count > (index + 1))) %>
+		<% if (index+1 > 5) %>
+	  		<input type="button" name="previous" class="previous action-button" value="Previous" />
+	  	<% end %>
 		<input type="button" name="next" class="next action-button" value="Next" />
 	</fieldset>
 	<fieldset>

@@ -91,16 +91,4 @@ $(document).ready ->
 	      return
 	    easing: 'easeInOutBack'
 	  return
-	  
-
-
-	$('form').submit (e) ->
-		$unchecked = $ 'div.form-group:not(:has(:radio:checked))'
-		questionlist = ""
-		$unchecked.each ->
-			questionlist = questionlist + '     ' + $(this).attr('data-question-label') + '\n'
-			return					
-		if $unchecked.length
-			alert 'You didn\'t answer the following questions:　\n' + questionlist
-			e.preventDefault()
 	return

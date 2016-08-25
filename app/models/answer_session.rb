@@ -7,6 +7,4 @@ class AnswerSession < ActiveRecord::Base
     :allow_destroy => true,
     :reject_if     => :all_blank
   
-    
-  
 end

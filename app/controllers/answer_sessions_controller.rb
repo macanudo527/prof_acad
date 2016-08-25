@@ -36,7 +36,7 @@ class AnswerSessionsController < ApplicationController
       # change the user's answer into the real answer based on the answer sequence
       params[:answer_session][:user_answers_attributes].each do |user_answer|
         # retrieve the user answer we saved earlier
-        answer_seq = UserAnswer.find_by(user_answer[1][:id]).answer_seq
+        answer_seq = UserAnswer.find(user_answer[1][:id]).answer_seq
         # convert it into an array for easy manipulation
         answer_array = answer_seq.to_s.split('').map { |digit| digit.to_i }
         # translate user's answer to real answer

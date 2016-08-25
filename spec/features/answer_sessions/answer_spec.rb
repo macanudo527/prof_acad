@@ -17,7 +17,7 @@ RSpec.feature 'Answer a Grouping' do
    expect(page.current_path).to eq new_user_session_path
  end 
  
- scenario 'can\'t save unless you answer all questions with javascript', :login => true, :js => true do
+ xscenario 'can\'t save unless you answer all questions with javascript', :login => true, :js => true do
     click_button('Next')
     sleep 1
     click_button('Next')

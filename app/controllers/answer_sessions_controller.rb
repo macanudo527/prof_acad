@@ -41,8 +41,11 @@ class AnswerSessionsController < ApplicationController
         answer_array = answer_seq.to_s.split('').map { |digit| digit.to_i }
         # translate user's answer to real answer
         real_answer = answer_array[user_answer[1][:answer].to_i]     
-        # merge the real answer into the permitted params   
-        filtered_params[:user_answers_attributes][user_answer[0]].merge!(answer: real_answer)
+        # merge the real answer into the permitted params
+        if !user_answer[1][:answer].nil?
+          filtered_params[:user_answers_attributes][user_answer[0]].merge!(answer: real_answer)
+        end
+        byebug
       end
 
       # re-permit the params since we added to them

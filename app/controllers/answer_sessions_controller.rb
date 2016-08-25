@@ -45,7 +45,6 @@ class AnswerSessionsController < ApplicationController
         if !user_answer[1][:answer].nil?
           filtered_params[:user_answers_attributes][user_answer[0]].merge!(answer: real_answer)
         end
-        byebug
       end
 
       # re-permit the params since we added to them

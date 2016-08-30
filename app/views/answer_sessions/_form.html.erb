@@ -3,10 +3,10 @@
 
   <% if @answer_session.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@answer_session.questions.user_answers.errors.count, "error") %> prohibited this answer from being saved:</h2>
+      <h2><%= pluralize(@answer_session.errors.count, "error") %> prohibited these answers from being saved:</h2>
 
       <ul>
-      <% @answer_session.questions.user_answers.errors.full_messages.each do |msg| %>
+      <% @answer_session.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

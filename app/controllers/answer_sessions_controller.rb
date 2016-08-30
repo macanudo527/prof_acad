@@ -21,6 +21,7 @@ class AnswerSessionsController < ApplicationController
       flash[:success] = "Answer successfully saved."
       redirect_to Grouping.find(params[:grouping_id])
     else
+      @grouping = Grouping.find(params[:grouping_id])
       render 'edit'
     end     
   end

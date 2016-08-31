@@ -9,7 +9,7 @@ class AnswerSession < ActiveRecord::Base
     :reject_if     => :all_blank
   
    validate do |answer_session|
-    error_msg = "Missing Answer for Questions "
+    error_msg = "Please Answer Question(s) "
     questions_with_errors = Array.new()
     count = 0
     answer_session.user_answers.each_with_index do |user_answer, index|
@@ -28,6 +28,7 @@ class AnswerSession < ActiveRecord::Base
     end
     
     if questions_with_errors.length > 0
+      error_msg += " and click 'save answers' again."
       errors[:base] << error_msg      
     end
 

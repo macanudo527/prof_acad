@@ -14,22 +14,23 @@ class AnswerSession < ActiveRecord::Base
     count = 0
     answer_session.user_answers.each_with_index do |user_answer, index|
       next if user_answer.valid?
- #     user_answer.errors.full_messages.each do |msg|
-        # you can customize the error message here:
         questions_with_errors.push(index+1)
-        count++
-        errors[:base] << "Missing Answer for Questions #{user_answer.question.question}"
- #     end
+        count += 1
     end
     questions_with_errors.each_with_index do |questionno, index|
       if index < count - 2
-        error_msg += questionno + ", "
+        error_msg += questionno.to_s + ", "
       elsif index == count - 2
-        error_msg += questionno
+        error_msg += questionno.to_s
       else
-        error_msg += " and " + questionno
+        error_msg += " and " + questionno.to_s
       end
     end
+    
+    if questions_with_errors.length > 0
+      errors[:base] << error_msg      
+    end
+
     
   end
   

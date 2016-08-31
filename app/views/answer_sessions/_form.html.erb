@@ -23,15 +23,15 @@
 	  <%= f.fields_for :user_answers, question.user_answers.find_by(answer_session: @answer_session) do |a| %>
 	
 	    <% answers = answer_shuffler(question, a.object.answer_seq)%> 
-	
-	    <div class="form-group" data-question-label="Question <%= questionno%>">
-			<%= a.radio_button :answer, '0' %>
+		<% previous_answer = params.has_key?(:answer_session) ? params[:answer_session][:user_answers_attributes][index.to_s][:answer] : -1 %>
+	    <div class="form-group">
+			<%= a.radio_button :answer, '0', :checked => previous_answer == "0" %>
 			<%= a.label :answer, answers[0], :value => '0' %>
-			<%= a.radio_button :answer, '1' %>
+			<%= a.radio_button :answer, '1', :checked => previous_answer == "1" %>
 			<%= a.label :answer, answers[1], :value => '1' %>
-			<%= a.radio_button :answer, '2' %>
+			<%= a.radio_button :answer, '2', :checked => previous_answer == "2" %>
 			<%= a.label :answer, answers[2], :value => '2' %>
-			<%= a.radio_button :answer, '3' %>
+			<%= a.radio_button :answer, '3', :checked => previous_answer == "3" %>
 			<%= a.label :answer, answers[3], :value => '3' %>
 	    </div>
 	    

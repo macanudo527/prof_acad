@@ -19,7 +19,7 @@
 	  <%= f.fields_for :user_answers, question.user_answers.find_by(answer_session: @answer_session) do |a| %>
 	
 	    <% answers = answer_shuffler(question, a.object.answer_seq)%> 
-		<% previous_answer = params.has_key?(:answer_session) ? params[:answer_session][:user_answers_attributes][index.to_s][:answer] : -1 %>
+		<% previous_answer = params.has_key?(:answer_session) ? params[:answer_session][:user_answers_attributes][index.to_s][:answer] : "-1" %>
 	    <div class="form-group">
 			<%= a.radio_button :answer, '0', :checked => previous_answer == "0" %>
 			<%= a.label :answer, answers[0], :value => '0' %>

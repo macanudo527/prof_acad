@@ -26,6 +26,14 @@ class AnswerSessionsController < ApplicationController
     end     
   end
   
+  def show
+    @answer_session = AnswerSession.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @answer_session }
+    end    
+  end
+  
   private
   
   

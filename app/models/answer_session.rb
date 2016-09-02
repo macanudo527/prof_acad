@@ -8,7 +8,18 @@ class AnswerSession < ActiveRecord::Base
     :allow_destroy => true,
     :reject_if     => :all_blank
   
-   validate do |answer_session|
+  def correct_count
+    count = 0
+    user_answers.each do |question|
+      if question.answer == "1"
+        count += 1
+      end
+    end
+    return count
+  end
+  
+  
+  validate do |answer_session|
     error_msg = "Please Answer Question(s) "
     questions_with_errors = Array.new()
     count = 0
@@ -32,7 +43,6 @@ class AnswerSession < ActiveRecord::Base
       errors[:base] << error_msg      
     end
 
-    
   end
   
 end

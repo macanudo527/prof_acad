@@ -19,7 +19,7 @@ class AnswerSessionsController < ApplicationController
     @answer_session.user = current_user
     if @answer_session.update_attributes(answer_session_params)
       flash[:success] = "Answer successfully saved."
-      redirect_to Grouping.find(params[:grouping_id])
+      redirect_to grouping_answer_session_url(params[:grouping_id], params[:id])
     else
       @grouping = Grouping.find(params[:grouping_id])
       render 'edit'

@@ -30,6 +30,10 @@ textarea {
   }
 }
 
+.left {
+  text-align: left;
+}
+
 
 /* typography */
 
@@ -42,6 +46,10 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+  .right {
+    position: absolute;
+    left: 0px; 
+  }
 }
 
 h2 {

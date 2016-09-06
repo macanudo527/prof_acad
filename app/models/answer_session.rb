@@ -11,7 +11,7 @@ class AnswerSession < ActiveRecord::Base
   def correct_count
     count = 0
     user_answers.each do |question|
-      if question.answer == "1"
+      if question.answer == 1
         count += 1
       end
     end

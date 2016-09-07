@@ -1,7 +1,9 @@
 <% provide(:title, "Your Results") %>
 
+<%= @percent_correct = (@answer_session.correct_count * 100) / @answer_session.user_answers.count %>
+
 <h1 class="left">Overall</h1>
-<div class="radial-progress" data-progress="45">
+<div class="radial-progress" data-progress="<%= @percent_correct %>">
 	<div class="circle">
 		<div class="mask full">
 			<div class="fill"></div>
@@ -18,7 +20,9 @@
 		</div>
 	</div>
 </div>
-<%= @answer_session.correct_count %> / <%= @answer_session.user_answers.count %>
+<div class="answer-counts">
+	<%= @answer_session.correct_count %> / <%= @answer_session.user_answers.count %>
+</div>
 <script>
 $('head style[type="text/css"]').attr('type', 'text/less');
 less.refreshStyles();

@@ -19,6 +19,8 @@ gem 'jbuilder',                '2.2.3'
 gem 'sdoc',                    '0.4.0', group: :doc
 gem 'jquery-easing-rails',     '0.0.2'
 gem 'jquery-turbolinks',       '0.2.1'
+gem 'less-rails',              '~> 2.7.0'
+gem 'therubyracer'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

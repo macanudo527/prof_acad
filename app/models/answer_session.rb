@@ -18,7 +18,17 @@ class AnswerSession < ActiveRecord::Base
     return count
   end
   
+  def incorrect_answers
+    incorrect_answers = Array.new
+    user_answers.each do |question|
+      if question.answer != 1
+        incorrect_answers << question
+      end
+    end
+    return incorrect_answers
+  end
   
+# Bubble up error msgs from user_answers to answer_session  
   validate do |answer_session|
     error_msg = "Please Answer Question(s) "
     questions_with_errors = Array.new()

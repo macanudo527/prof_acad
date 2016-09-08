@@ -18,7 +18,8 @@ class AnswerSessionsController < ApplicationController
     @answer_session = AnswerSession.find(params[:id])
     @answer_session.user = current_user
     if @answer_session.update_attributes(answer_session_params)
-      flash[:success] = "Answer successfully saved."
+#      flash[:success] = "Answer successfully saved."
+      
       redirect_to grouping_answer_session_url(params[:grouping_id], params[:id])
     else
       @grouping = Grouping.find(params[:grouping_id])

@@ -67,6 +67,14 @@
 
 }
 
+div.correct {
+  background: rgb(193, 231, 156);
+}
+
+div.incorrect {
+  background: rgb(231, 156, 156);
+}
+
 .answer-counts {
   font-family:    "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight:    800;

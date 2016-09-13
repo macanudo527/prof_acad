@@ -17,7 +17,11 @@ module UserAnswerHelper
       return question.correct_answer
     when 2
       return question.a2
-      
+    when 3
+      return question.a3
+    when 4
+      return question.a4
+    end
   end
   
   private

@@ -28,12 +28,24 @@
 	</div>
 </div>
 
-<div class="row">
-	<% @answer_session.user_answers.each do |answer| %>
-		<%= answer.question.question %>
-		You answered: <%= answer.answer %>
-	
-	<% end %>
+<% @answer_session.user_answers.each_with_index do |answer, index| %>
+<% correct = answer.answer == 1 %>
+<% if correct
+	row_style = "correct"
+  else
+  	row_style = "incorrect"
+  end %>
+<div class="row well <%= row_style %>">
+
+		<h2 class="left">Question <%= index + 1 %></h2>
+		<%= answer.question.question %></br>
+		<% if correct %>
+			O <%= answer_retriever(answer.question, answer.answer) %></br>
+		<% else %>
+			X <%= answer_retriever(answer.question, answer.answer) %></br>
+			Correct Answer: <%= answer_retriever(answer.question, 1) %>
+		<% end %>
 	
 </div>
+<% end %>
 

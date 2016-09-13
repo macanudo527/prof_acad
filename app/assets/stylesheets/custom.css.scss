@@ -55,7 +55,7 @@ h1 {
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   text-align: center;
   font-weight: normal;
   color: $gray-light;
@@ -64,6 +64,12 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+
+.well {
+  h2 {
+    margin-top: 0px;
+  }
 }
 
 /* header */

@@ -28,4 +28,12 @@
 	</div>
 </div>
 
+<div class="row">
+	<% @answer_session.user_answers.each do |answer| %>
+		<%= answer.question.question %>
+		You answered: <%= answer.answer %>
+	
+	<% end %>
+	
+</div>
 

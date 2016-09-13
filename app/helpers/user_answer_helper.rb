@@ -11,6 +11,15 @@ module UserAnswerHelper
     answers
   end
   
+  def answer_retriever(question, answer)
+    case answer
+    when 1
+      return question.correct_answer
+    when 2
+      return question.a2
+      
+  end
+  
   private
   
     def set_answer(question, answer_no)

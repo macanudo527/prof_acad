@@ -26,6 +26,10 @@
 	<div class="col-sm-3 answer-counts">
 		<%= @answer_session.correct_count %> / <%= @answer_session.user_answers.count %>
 	</div>
+	<div class="col-sm-3">
+		<%= link_to "Take another Quiz", groupings_path %></br>
+		<%= link_to "Your Results", '#' %>	
+	</div>
 </div>
 
 <% @answer_session.user_answers.each_with_index do |answer, index| %>

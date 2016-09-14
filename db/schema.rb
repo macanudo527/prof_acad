@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914003708) do
+ActiveRecord::Schema.define(version: 20160914125608) do
 
   create_table "answer_sessions", force: :cascade do |t|
     t.integer  "grouping_id"
@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(version: 20160914003708) do
     t.integer  "test_id"
     t.integer  "per_page"
     t.integer  "order"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.text     "description"
   end
 
   add_index "groupings", ["test_id"], name: "index_groupings_on_test_id"

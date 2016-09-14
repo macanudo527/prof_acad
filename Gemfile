@@ -20,7 +20,8 @@ gem 'sdoc',                    '0.4.0', group: :doc
 gem 'jquery-easing-rails',     '0.0.2'
 gem 'jquery-turbolinks',       '0.2.1'
 gem 'less-rails',              '~> 2.7.0'
-gem 'therubyracer'
+gem 'therubyracer',            '0.12.2'
+gem 'acts-as-taggable-on',     '~> 3.4'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

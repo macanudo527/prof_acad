@@ -1,12 +1,10 @@
 <div class="row">
-	<div class="col-md-8">
-		<section class="grouping_info">
-
-				<%= @grouping.name %></br>
-				<%= @grouping.description %></br>
-				<%= @grouping.tag_list %>
-
-		</section>
+	<div class="col-md-6 col-md-offset-3">
+		<h2 class="left"><%= @grouping.name %></h2>
+		<%= @grouping.description %></br>
+		<div class="tags">
+			<%= @grouping.tag_list %>
+		</div>
 	</div>
 </div>
 <div class="row">

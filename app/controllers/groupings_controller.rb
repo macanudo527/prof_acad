@@ -63,7 +63,7 @@ class GroupingsController < ApplicationController
   private
   
     def grouping_params
-      params.require(:grouping).permit(:name, questions_attributes: [:id, :grouping_id, :user_id, :question, :correct_answer, :a2, :a3, :a4, :destroy])
+      params.require(:grouping).permit(:name, :description, :tag_list, questions_attributes: [:id, :grouping_id, :user_id, :question, :correct_answer, :a2, :a3, :a4, :destroy])
     end
     
     # Confirms the correct user.

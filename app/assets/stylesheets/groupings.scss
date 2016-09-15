@@ -1,3 +1,13 @@
 // Place all the styles related to the groupings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.justified-label {
+    float: left;
+    width: 140px;
+    padding-top: 5px;
+    text-align: right;
+}
+
+.justified-field {
+  margin-left: 160px;
+}

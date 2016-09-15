@@ -1,11 +1,26 @@
+<% provide(:title, "Your Results") %>
+
+<h1>Edit Quiz</h1>
+
+
 <%= form_for(@grouping) do |f| %>
 
     <%= render 'shared/error_messages', object: f.object %>
-
-	<div class="form-group">
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-    </div>
+    
+<div class="row">
+  	<div class="col-md-6 col-md-offset-3">
+		<div class="form-group">
+			<%= f.label :name, nil, class: "justified-label" %>
+			<div class="justified-field"><%= f.text_field :name %></div>
+	    </div>
+	    <div class="form-group">
+	    	<%= f.label :description, nil, class: "justified-label" %>
+	    	<div class="justified-field"><%= f.text_area :description %></div>
+	    </div>
+	    <div class="form-group">
+	    	<%= f.label :tags, nil, class: "justified-label" %>
+	    	<div class="justified-field"><%= f.text_field :tag_list %></div>
+	    </div>
 
 
 	  <%= f.fields_for :questions do |ff| %>
@@ -44,7 +59,9 @@
 			<%= link_to "Add a new question", new_question_path(:question => { :grouping_id => @grouping.id } ) %>
 		</div>
 
-  <div class="actions">
-    <%= submit_tag %>
-  </div>
+	  <div class="actions">
+	    <%= submit_tag %>
+	  </div>
+	</div>
+</div>
 <% end %>

@@ -29,12 +29,13 @@
 		  
 		  
 
-	  	<% if current_user.groupings.present? %>
+	  	<% if current_user.groupings.present? && !@question.grouping.present? %>
 	  		<div class="form-group">
 		  		<%= ff.label :grouping_id, "Quiz" %></br>
 		  		<%= ff.collection_select(:grouping_id, current_user.groupings, :id, :name)%>
 			<div>
 	  	<% end %>
+
 
 		  
 		<div class="actions">

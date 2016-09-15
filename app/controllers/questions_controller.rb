@@ -5,11 +5,16 @@ class QuestionsController < ApplicationController
       
   def new
     @question = current_user.questions.new
+    
+    if params[:question][:grouping_id].present?
+      @question.grouping = Grouping.find(params[:question][:grouping_id])      
+    end
   end
   
   def create  
     @question = current_user.questions.build(question_params)
-    if params[:grouping_id].present?
+    byebug
+    if params[:question][:grouping_id].present?
       @question.grouping = Grouping.find(params[:grouping_id])      
     end
     respond_to do |format|

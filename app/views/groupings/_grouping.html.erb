@@ -1,5 +1,5 @@
 <li>
-	<%= link_to grouping.name, grouping_questions_path(grouping) %>
+	<%= link_to grouping.name, grouping_path(grouping) %>
 	<% if current_user == grouping.user %>
 			 | <%= link_to 'edit', edit_user_grouping_path(current_user, grouping) %>
 			 | <%= link_to 'delete', grouping, method: :delete, data: {confirm: "Are you sure?"} %>

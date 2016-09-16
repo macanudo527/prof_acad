@@ -15,7 +15,7 @@ end
 
 <ul class="questions">
 	<% @questions.each_with_index do |question, index| %>
-		<%= render partial: question, locals: {question: question, index: index} %>
+		<%= render partial: question, locals: {question: question, index: index, answerable: true} %>
 	<% end %>
 </ul>
 

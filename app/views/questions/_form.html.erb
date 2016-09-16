@@ -34,10 +34,11 @@
 		  		<%= ff.label :grouping_id, "Quiz" %></br>
 		  		<%= ff.collection_select(:grouping_id, current_user.groupings, :id, :name)%>
 			<div>
+	  	<% else %>
+	  		<%= ff.hidden_field :grouping_id, :value => @question.grouping_id %>
 	  	<% end %>
 
 
-		  
 		<div class="actions">
     		 <%= ff.submit yield(:button_text), class: "btn btn-primary" %>
   		</div>	

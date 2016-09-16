@@ -13,7 +13,9 @@
 			 <% end %>
 			 | <%= link_to 'delete', question, method: :delete, data: {confirm: "Are you sure?"} %>
 	<% end %>
+	<% if answerable %>
 	| <%= link_to 'answer', new_question_user_answer_path(question) %>
+	<% end %>
 	<div id="spoiler<%= index%>" style="display: none;">
 		<div class="answer-margin">
 			<b>Answer 1:</b> <%= answers[0]%>

@@ -13,15 +13,11 @@ class QuestionsController < ApplicationController
   
   def create  
     @question = current_user.questions.build(question_params)
-    byebug
-    if params[:question][:grouping_id].present?
-      @question.grouping = Grouping.find(params[:grouping_id])      
-    end
     respond_to do |format|
       if @question.save
         flash[:success] = "Question Added!"
-        format.html { redirect_to(@question) }
-        format.xml  { render :xml => @question, :status => :created, :location => @question }
+        format.html { redirect_to(@question.grouping) }
+        format.xml  { render :xml => @question.grouping, :status => :created, :location => @question.grouping }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }

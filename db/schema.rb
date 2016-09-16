@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914125608) do
+ActiveRecord::Schema.define(version: 20160916004340) do
 
   create_table "answer_sessions", force: :cascade do |t|
     t.integer  "grouping_id"
@@ -66,13 +66,22 @@ ActiveRecord::Schema.define(version: 20160914125608) do
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "grouping_id"
     t.integer  "question_type_id"
   end
 
-  add_index "questions", ["grouping_id"], name: "index_questions_on_grouping_id"
   add_index "questions", ["question_type_id"], name: "index_questions_on_question_type_id"
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
+
+  create_table "shares", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "grouping_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "shares", ["grouping_id"], name: "index_shares_on_grouping_id"
+  add_index "shares", ["question_id", "grouping_id"], name: "index_shares_on_question_id_and_grouping_id", unique: true
+  add_index "shares", ["question_id"], name: "index_shares_on_question_id"
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

@@ -1,7 +1,6 @@
 class Grouping < ActiveRecord::Base
   belongs_to :test
   belongs_to :user
-  has_many :questions
   has_many :answer_sessions
   acts_as_taggable
   

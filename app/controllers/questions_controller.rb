@@ -5,18 +5,16 @@ class QuestionsController < ApplicationController
       
   def new
     @question = current_user.questions.new
-    
-    if params[:question][:grouping_id].present?
-      @question.addGrouping(Grouping.find(params[:question][:grouping_id]))      
-    end
   end
   
   def create  
     @question = current_user.questions.build(question_params)
+    @grouping = Grouping.find_by(params[:question][:grouping_id])
     respond_to do |format|
       if @question.save
         flash[:success] = "Question Added!"
-        format.html { redirect_to(params[:question][:grouping_id]) }
+        @question.addGrouping(@grouping)
+        format.html { redirect_to(@grouping) }
         format.xml  { render :xml => @question.grouping, :status => :created, :location => @question.grouping }
       else
         format.html { render :action => "new" }
@@ -41,7 +39,11 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if @question.update_attributes(question_params)
       flash[:success] = "Question successfully updated."
-      redirect_to @question
+      if params[:question][:grouping_id].present?
+        redirect_to grouping_path(params[:question][:grouping_id])
+      else
+        redirect_to @question
+      end
     else
       render 'edit'
     end
@@ -72,7 +74,7 @@ class QuestionsController < ApplicationController
   private
 
     def question_params
-      params.require(:question).permit(:grouping_id, :id, :question, :correct_answer, :a2,
+      params.require(:question).permit(:id, :question, :correct_answer, :a2,
                                    :a3, :a4)
     end
 

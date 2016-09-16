@@ -56,7 +56,7 @@
 		<% end %>
 		
 		<div class="form-group">
-			<%= link_to "Add a new question", new_question_path(:question => { :grouping_id => @grouping.id } ) %>
+			<%= link_to "Add a new question", new_grouping_question_path(@grouping) %>
 		</div>
 
 	  <div class="actions">

@@ -20,9 +20,9 @@
 		  	<b>Answer 3: </b><%= @question.a4 %>
 		  </div>
 		  
-	  	<% if @question.grouping.present? %>
+	  	<% if @question.groupings.present? %>
 	  		<div class="form-group">
-		  		<b>Quiz: </b><%= @question.grouping.name %>
+		  		<b>In Quizzes </b><%= @question.grouping_list %>
 			<div>
 	  	<% end %>
 	</div>
@@ -30,7 +30,7 @@
 
 
 <%= link_to 'Edit', edit_user_question_path(current_user, @question) %> |
-<% if @question.grouping.present? %>
-	<%= link_to @question.grouping.name, user_grouping_path(current_user, @question.grouping)%> |
+<% if @question.groupings.present? %>
+	<%= link_to "Quizzes that contain this Question", '#' %> |
 <% end %>
 <%= link_to 'All Questions', questions_path %>

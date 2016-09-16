@@ -5,9 +5,9 @@ class Grouping < ActiveRecord::Base
   acts_as_taggable
   
   has_many   :question_shares, class_name: "Share",
-                        foreign_key: "question_id",
+                        foreign_key: "grouping_id",
                         dependent:   :destroy
-  has_many   :questions, through: :question_shares, source: :question_id
+  has_many   :questions, through: :question_shares, source: :question
   
   def addQuestion(question)
     question_shares.create(question_id: question.id)

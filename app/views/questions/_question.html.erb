@@ -6,8 +6,8 @@
 	</a>
 	<% if current_user == question.user %>
 			 | 
-			 <% if question.grouping.present? %>
-			 	<%= link_to 'edit', edit_grouping_question_path(question.grouping, question) %>			 	
+			 <% if controller_name = "groupings" %>
+			 	<%= link_to 'edit', edit_grouping_question_path(params[:id] , question) %>
 			 <% else %>
 			 	<%= link_to 'edit', edit_user_question_path(current_user, question) %>
 			 <% end %>
@@ -30,9 +30,9 @@
 			<b>Answer 4:</b> <%= answers[3]%>
 		</div>
 		
-		<% if question.grouping.present? %>
+		<% if question.groupings.present? %>
 		<div class="answer-margin">
-			<b>Quiz: </b> <%= question.grouping.name%>
+			<b>In Quizzes </b> <%= question.grouping_list %>
 		</div>
 		<% end %>
 		

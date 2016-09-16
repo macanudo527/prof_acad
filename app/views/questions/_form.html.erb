@@ -28,15 +28,7 @@
 		  </div>
 		  
 		  
-
-	  	<% if current_user.groupings.present? && !@question.grouping.present? %>
-	  		<div class="form-group">
-		  		<%= ff.label :grouping_id, "Quiz" %></br>
-		  		<%= ff.collection_select(:grouping_id, current_user.groupings, :id, :name)%>
-			<div>
-	  	<% else %>
-	  		<%= ff.hidden_field :grouping_id, :value => params[:grouping_id] %>
-	  	<% end %>
+	  	<%= ff.hidden_field :grouping_id, :value => params[:grouping_id] %>
 
 
 		<div class="actions">

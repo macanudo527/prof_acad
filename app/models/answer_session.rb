@@ -38,15 +38,7 @@ class AnswerSession < ActiveRecord::Base
         questions_with_errors.push(index+1)
         count += 1
     end
-    questions_with_errors.each_with_index do |questionno, index|
-      if index < count - 2
-        error_msg += questionno.to_s + ", "
-      elsif index == count - 2
-        error_msg += questionno.to_s
-      else
-        error_msg += " and " + questionno.to_s
-      end
-    end
+    error_msg += questions_with_errors.to_sentence
     
     if questions_with_errors.length > 0
       error_msg += " and click 'save answers' again."

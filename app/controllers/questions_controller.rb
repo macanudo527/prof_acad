@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.new
     
     if params[:question][:grouping_id].present?
-      @question.grouping = Grouping.find(params[:question][:grouping_id])      
+      @question.addGrouping(Grouping.find(params[:question][:grouping_id]))      
     end
   end
   
@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         flash[:success] = "Question Added!"
-        format.html { redirect_to(@question.grouping) }
+        format.html { redirect_to(params[:question][:grouping_id]) }
         format.xml  { render :xml => @question.grouping, :status => :created, :location => @question.grouping }
       else
         format.html { render :action => "new" }

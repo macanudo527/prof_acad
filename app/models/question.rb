@@ -9,4 +9,14 @@ class Question < ActiveRecord::Base
   
   validates_presence_of :question, :correct_answer, :a2, :a3, :a4
   validates :question, uniqueness: true
+
+  def addGrouping(grouping)
+    grouping_shares.create(grouping_id: grouping.id)
+  end
+  
+  def deleteGrouping(grouping)
+    grouping_shares.find_by(grouping_id: grouping.id).destroy
+  end
+
+
 end

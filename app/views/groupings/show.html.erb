@@ -21,8 +21,11 @@
 	</div>
 </div>
 <div class="row">	
-	<div class="col-md-8">
+	<div class="col-md-4">
 		<%= link_to "Add a new question", new_grouping_question_path(@grouping) %>
+	</div>
+	<div class="col-md-4">
+		<%= link_to "Choose a question from the pool", choose_questions_path(grouping_id: @grouping.id) %>
 	</div>
 </div>
 

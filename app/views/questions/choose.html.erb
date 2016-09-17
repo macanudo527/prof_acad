@@ -1,0 +1,22 @@
+<% 
+if controller_name == "grouping"
+	@title = "Questions from " + @questions.first.grouping.name
+elsif request.fullpath.include?("user")
+	@title = "Your Questions"
+else
+	@title = "Available Questions"
+end
+%>
+
+<% provide(:title, @title) %>
+<h1><%= @title %></h1>
+
+<%= will_paginate %>
+
+<ul class="questions">
+	<% @questions.each_with_index do |question, index| %>
+		<%= render partial: question, locals: {question: question, index: index, answerable: false, grouping: params[:grouping_id]} %>
+	<% end %>
+</ul>
+
+<%= will_paginate %>

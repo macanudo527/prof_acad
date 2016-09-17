@@ -12,6 +12,8 @@
 			 	<%= link_to 'edit', edit_user_question_path(current_user, question) %>
 			 <% end %>
 			 | <%= link_to 'delete', question, method: :delete, data: {confirm: "Are you sure?"} %>
+	<% elsif grouping.present? %>
+		| <%= link_to 'add', '#' %>
 	<% end %>
 	<% if answerable %>
 	| <%= link_to 'answer', new_question_user_answer_path(question) %>

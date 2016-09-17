@@ -61,6 +61,10 @@ class QuestionsController < ApplicationController
     end
   end
   
+  def choose
+    @questions = Question.paginate(page: params[:page])
+  end
+  
   def destroy
     @question = Question.find(params[:id]).destroy
     flash[:success] = "Question deleted"

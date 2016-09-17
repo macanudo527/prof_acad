@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'home/about'
   
   resources :questions do
+    get 'choose', on: :collection
     resources :user_answers
   end
 

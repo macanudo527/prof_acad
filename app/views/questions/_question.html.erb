@@ -6,7 +6,7 @@
 	</a>
 	<% if current_user == question.user %>
 			 | 
-			 <% if controller_name = "groupings" %>
+			 <% if controller_name == "groupings" %>
 			 	<%= link_to 'edit', edit_grouping_question_path(params[:id] , question) %>
 			 <% else %>
 			 	<%= link_to 'edit', edit_user_question_path(current_user, question) %>

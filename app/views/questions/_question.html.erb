@@ -4,7 +4,7 @@
 	<a title="<%= question.question %>" href="javascript:void(0)" onclick="unspoiler('<%= "spoiler" + index.to_s %>')">
 		<%= question.question %>
 	</a>
-	<% if current_user == question.user %>
+	<% if current_user == question.user  && !params[:grouping_id].present? %>
 			 | 
 			 <% if controller_name == "groupings" %>
 			 	<%= link_to 'edit', edit_grouping_question_path(params[:id] , question) %>
@@ -13,8 +13,11 @@
 			 <% end %>
 			 | <%= link_to 'delete', question, method: :delete, data: {confirm: "Are you sure?"} %>
 	<% elsif params[:grouping_id].present? %>
-		| <%= link_to 'add', new_share_path(grouping_id: params[:grouping_id], question_id: question.id) %>
-<% end %>
+		| <%= form_for(question.grouping_shares.build) do |f| %>
+			<%= hidden_field_tag :question_id, question.id %>
+  			<%= hidden_field_tag :grouping_id, params[:grouping_id] %>
+  			<%= f.submit "Add Question", class: "btn btn-primary" %>
+		  <% end %>
 	<% end %>
 	<% if answerable %>
 	| <%= link_to 'answer', new_question_user_answer_path(question) %>

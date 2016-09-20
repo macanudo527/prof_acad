@@ -12,8 +12,9 @@
 			 	<%= link_to 'edit', edit_user_question_path(current_user, question) %>
 			 <% end %>
 			 | <%= link_to 'delete', question, method: :delete, data: {confirm: "Are you sure?"} %>
-	<% elsif grouping.present? %>
-		| <%= link_to 'add', '#' %>
+	<% elsif params[:grouping_id].present? %>
+		| <%= link_to 'add', new_share_path(grouping_id: params[:grouping_id], question_id: question.id) %>
+<% end %>
 	<% end %>
 	<% if answerable %>
 	| <%= link_to 'answer', new_question_user_answer_path(question) %>

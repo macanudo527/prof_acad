@@ -13,6 +13,10 @@ class Grouping < ActiveRecord::Base
     question_shares.create(question_id: question.id)
   end
   
+  def addQuestionId(id)
+    question_shares.create(question_id: id)
+  end
+  
   def deleteQuestion(question)
     question_shares.find_by(question_id: question.id).destroy
   end

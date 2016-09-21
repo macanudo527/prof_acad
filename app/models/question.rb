@@ -9,6 +9,10 @@ class Question < ActiveRecord::Base
   
   validates_presence_of :question, :correct_answer, :a2, :a3, :a4
   validates :question, uniqueness: true
+  
+  def self.notInGroup(group)
+    
+  end
 
   def addGrouping(grouping)
     grouping_shares.create(grouping_id: grouping.id)
@@ -22,5 +26,6 @@ class Question < ActiveRecord::Base
     grouping_names = groupings.map(&:name)
     grouping_names.to_sentence 
   end
+  
 
 end

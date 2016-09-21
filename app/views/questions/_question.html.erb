@@ -1,10 +1,11 @@
 <% answers = answer_shuffler(question) %>
-<li>
-	
-	<a title="<%= question.question %>" href="javascript:void(0)" onclick="unspoiler('<%= "spoiler" + index.to_s %>')">
-		<%= question.question %>
-	</a>
-	<% if current_user == question.user  && !params[:grouping_id].present? %>
+<div class="well">
+	<div class="row">
+		<div class="col-md-10">
+			<a title="<%= question.question %>" href="javascript:void(0)" onclick="unspoiler('<%= "spoiler" + index.to_s %>')">
+				<%= question.question %>
+			</a>
+		<% if current_user == question.user  && !params[:grouping_id].present? %>
 			 | 
 			 <% if controller_name == "groupings" %>
 			 	<%= link_to 'edit', edit_grouping_question_path(params[:id] , question) %>
@@ -12,35 +13,40 @@
 			 	<%= link_to 'edit', edit_user_question_path(current_user, question) %>
 			 <% end %>
 			 | <%= link_to 'delete', question, method: :delete, data: {confirm: "Are you sure?"} %>
-	<% elsif params[:grouping_id].present? %>
-		| <%= form_for(question.grouping_shares.build) do |f| %>
-			<%= hidden_field_tag :question_id, question.id %>
-  			<%= hidden_field_tag :grouping_id, params[:grouping_id] %>
-  			<%= f.submit "Add Question", class: "btn btn-primary" %>
-		  <% end %>
-	<% end %>
-	<% if answerable %>
-	| <%= link_to 'answer', new_question_user_answer_path(question) %>
-	<% end %>
-	<div id="spoiler<%= index%>" style="display: none;">
-		<div class="answer-margin">
-			<b>Answer 1:</b> <%= answers[0]%>
-		</div>
-		<div class="answer-margin">
-			<b>Answer 2:</b> <%= answers[1]%>
-		</div>
-		<div class="answer-margin">
-			<b>Answer 3:</b> <%= answers[2]%>
-		</div>
-		<div class="answer-margin">
-			<b>Answer 4:</b> <%= answers[3]%>
-		</div>
-		
-		<% if question.groupings.present? %>
-		<div class="answer-margin">
-			<b>In Quizzes </b> <%= question.grouping_list %>
-		</div>
+			 | <%= link_to 'answer', new_question_user_answer_path(question) %>
+		<% elsif params[:grouping_id].present? %> 
+		    </div>
+			<div class="col-md-2">  
+			  <%= form_for(question.grouping_shares.build) do |f| %>
+				<%= hidden_field_tag :question_id, question.id %>
+	  			<%= hidden_field_tag :grouping_id, params[:grouping_id] %>
+	  			<%= f.submit "Add Question", class: "btn btn-primary" %>
+			  <% end %>
 		<% end %>
-		
-	</div>		
-</li>  
+		</div>
+	</div>
+	<div class="row">
+		<div id="spoiler<%= index%>" style="display: none;">
+			<div class="answer-margin">
+				<b>Answer 1:</b> <%= answers[0]%>
+			</div>
+			<div class="answer-margin">
+				<b>Answer 2:</b> <%= answers[1]%>
+			</div>
+			<div class="answer-margin">
+				<b>Answer 3:</b> <%= answers[2]%>
+			</div>
+			<div class="answer-margin">
+				<b>Answer 4:</b> <%= answers[3]%>
+			</div>
+			
+			<% if question.groupings.present? %>
+			<div class="answer-margin">
+				<b>In Quizzes </b> <%= question.grouping_list %>
+			</div>
+			<% end %>
+			
+		</div>		
+	</div>
+</div>
+

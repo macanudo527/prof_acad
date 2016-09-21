@@ -62,7 +62,7 @@ class QuestionsController < ApplicationController
   end
   
   def choose
-    @questions = Question.paginate(page: params[:page])
+    @questions = Question.notInGroup(params[:grouping_id]).paginate(page: params[:page])
   end
   
   def destroy

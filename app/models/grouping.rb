@@ -17,8 +17,8 @@ class Grouping < ActiveRecord::Base
     question_shares.create(question_id: id)
   end
   
-  def deleteQuestion(question)
-    question_shares.find_by(question_id: question.id).destroy
+  def deleteQuestionId(questionid)
+    question_shares.find_by(question_id: questionid).destroy
   end
   
   accepts_nested_attributes_for :questions,

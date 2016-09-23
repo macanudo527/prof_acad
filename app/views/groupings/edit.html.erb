@@ -30,6 +30,7 @@
 				
 		<% if ff.object.persisted? %>
 		  <%= link_to 'delete', grouping_question_path(@grouping.id, ff.object.id), method: :delete, data: {confirm: "Are you sure?"} %>
+		  <%= link_to 'remove this question', share_path(grouping_id: @grouping.id, question_id: ff.object.id), method: :delete, data: {confirm: "Are you sure?"} %>
 		<% end %>	
 		</div>
 		
@@ -55,13 +56,22 @@
 		
 		<% end %>
 		
-		<div class="form-group">
-			<%= link_to "Add a new question", new_grouping_question_path(@grouping) %>
-		</div>
-
 	  <div class="actions">
 	    <%= submit_tag %>
 	  </div>
 	</div>
 </div>
 <% end %>
+</br>
+<div class="row">
+
+		<div class="col-md-4 col-md-offset-3">
+			<%= link_to "Add a new question", new_grouping_question_path(@grouping) %>
+		</div>
+		<div class="col-md-4">
+			<%= link_to "Choose a question from the pool", choose_questions_path(grouping_id: @grouping.id) %>			
+		</div>
+
+	
+</div>
+	

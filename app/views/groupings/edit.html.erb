@@ -29,7 +29,6 @@
 		  <%= ff.text_field :question, :size => 80  %>
 				
 		<% if ff.object.persisted? %>
-		  <%= link_to 'delete', grouping_question_path(@grouping.id, ff.object.id), method: :delete, data: {confirm: "Are you sure?"} %>
 		  <%= link_to 'remove this question', share_path(grouping_id: @grouping.id, question_id: ff.object.id), method: :delete, data: {confirm: "Are you sure?"} %>
 		<% end %>	
 		</div>

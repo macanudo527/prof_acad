@@ -47,7 +47,9 @@ class GroupingsController < ApplicationController
  
   def index
     @groupings = params[:user_id] ? 
-      User.find(params[:user_id]).groupings.paginate(page: params[:page]) :     
+      User.find(params[:user_id]).groupings.paginate(page: params[:page]) : 
+      params[:question_id] ?
+      Question.find(params[:question_id]).groupings.paginate(page: params[:page]) :    
       @groupings = Grouping.paginate(page: params[:page])    
   end
   

@@ -11,7 +11,7 @@ class Question < ActiveRecord::Base
   validates :question, uniqueness: true
   
   def self.notInGroup(grouping_id) 
-    includes(:grouping_shares).where('shares.id IS NULL OR shares.grouping_id != ?', grouping_id).references(:shares)
+    includes(:grouping_shares).where("NOT EXISTS (SELECT * FROM shares WHERE shares.question_id = questions.id AND shares.grouping_id = ?)", grouping_id).references(:shares)
   end
 
   def addGrouping(grouping)
